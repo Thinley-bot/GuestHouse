@@ -1,0 +1,147 @@
+{% extends 'basic.html' %}
+{% block title %}About us
+{% endblock title %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  color: black;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <h1>In pursuit of preparing tomorrow's technologist</h1>
+  <p>The College currently offers people fto halt in thier long journey with affordable price and decent quality rooms.</p>
+  <p>Hurry up and take the Chance!</p>
+</div>
+
+<h1 style="text-align:center">Our Team</h1>
+<div class="row">
+  <div class="column">
+    <div class="card">
+        {% load static %}
+        <img src="{% static 'khentse.jpg' %}" alt="khentse" style="height:310px;">
+      <div class="container">
+        <h2>Khentse Dorji</h2>
+        <p class="title">CEO & Founder</p>
+        <p>Khentse@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+        {% load static %}
+        <img src="{% static 'yangchen.jpg' %}" alt="yangchen" style="height:310px;">
+      <div class="container">
+        <h2>Sonam Yangchen</h2>
+        <p class="title">Sen. Developer</p>
+        <p>02910155@cstguesthouse.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+        {% load static %}
+        <img src="{% static 'Lama.jpg' %}" alt="lama" style="height:310px;">
+      <div class="container">
+        <h2>Thinley Norbu</h2>
+        <p class="title">Developer</p>
+        <p>02910167@cstguesthouse.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+        {% load static %}
+        <img src="{% static 'pema.jpg' %}" alt="pema" style="height:310px;">
+      <div class="container">
+        <h2>Pema Wangyal</h2>
+        <p class="title">Jr. Developer</p>
+        <p>Pema@cst.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+{% endblock body %}
+
+
+

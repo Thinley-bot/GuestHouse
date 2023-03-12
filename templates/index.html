@@ -1,0 +1,156 @@
+    {% extends 'basic.html' %}
+    {% block title %}CST GuestHouse
+    {% endblock title %}
+    {% block body %}
+     <!--Booking Section starts here-->
+    <section>
+        <div class="container-fluid py-5 px-5 ">
+            <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row justify-content-center py-5 bg-light">
+                <div class="col-lg-4">
+                    <label for="">Location</label>
+                    <select class="form-control" name="search_location" id="roomstatus">
+                        
+                        <option>Location</option>
+                        {% for each_location,each_guest_id in all_location %}
+                            
+                            <option value={{each_guest_id}}>{{each_location}}</option>
+                        {% endfor %}    
+                    </select>
+                </div>
+                {%load app_tags%}
+                <div class="col-lg-2">
+                    <label for="">Check in</label>
+                    <input class="form-control mr-sm-2" type="date" placeholder="Check in" name="cin" min={%todays_date%} max={% max_date %} aria-label="Search" required="True">
+                </div>
+                <div class="col-lg-2">
+                    <label for="">Check Out</label>
+                    <input class="form-control mr-sm-2" type="date" placeholder="Check out" name="cout" min={%tommorow%} max={% max_date%} aria-label="Search" required="True">
+                </div>
+                <div class="col-lg-2">
+                    <label for="">Person</label>
+                    <input class="form-control mr-sm-2" type="number" placeholder="Person" name="capacity" aria-label="Search" required="True">
+                </div>
+                <div class="col-lg-2">
+                    <input type="submit" value="Check Availabilty" class="form-control mr-sm-2 btn btn-primary my-4" style="position: relative;top: 7px;">
+                </div>
+                {% if rooms %}
+                <p class="text-center text-success">Rooms Available</p>
+                {% endif %}
+                
+            </div>
+            </form>
+
+        </div>
+    </section>
+    <!--Booking Section ends here-->
+    <!--Fetched reults appear here-->
+    <div class="container-fluid px-0 mx-aut">
+        {% if rooms %}
+           <table class="table">
+               <thead class="o">
+                <th>Type</th>
+                <th>Location</th>
+                <th>Person</th>
+                <th>price</th>
+                <th>Action</th>
+            </thead>
+            {% for r in rooms %}
+                <tr class="">
+                <td>{{ r.get_room_type_display }}</td>
+                <td>{{ r.guest.location }}</td>
+                <td>{{ r.capacity }}</td>
+                <td>{{ r.price }}</td>
+                
+                <td><a href="/user/book-room?roomid={{r.id}}"><button class="btn btn-warning">Book Now</button></a></td>
+                </tr>
+            {% endfor %}
+            
+           </table> 
+        {% endif %}
+    </div>
+    <!--Fetched results ends here-->
+
+
+    <h3 class="text-center text-dark">Rooms Types</h3>
+
+    <!--Room tables starts here-->
+    <div class="container-fluid px-0" style="border:1px solid red">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Information</th>
+                    <th class="text-center">View</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center">
+                        <!--Room details-->
+                        <h1>Single</h1>
+                        <p>Price:Nu.300/day</p>
+
+                        <p>Size :30ft</p>
+                        <p>Capacity :Max person 1</p>
+
+                        <p>Services :Wifi,Bathroom</p>
+
+                    </td>
+                    <td class="text-center">
+                        <!--Room Images-->
+                        {% load static %}
+                        <img src="{% static 'single.jpg' %}" alt="" style="height:200px;">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <!--Room details-->
+                        <h1>Double</h1>
+                        <p>Price:Nu.400/day</p>
+
+                        <p>Size :30 ft</p>
+                        <p>Capacity :Max person 2</p>
+
+                        <p>Services :Wifi,Bathroom</p>
+                        
+                    </td>
+                    <td class="text-center">
+                        <!--Room Images-->
+                        {% load static %}
+                        <img src="{% static 'twin-haram.jpg' %}" alt="" style="height:250px; width:410px;"
+                            alt="" class="img-fluid pt-4">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <!--Room details-->
+                        <h1>Quad</h1>
+                        <p>Price:Nu.500/day</p>
+
+                        <p>Size :30 ft</p>
+                        <p>Capacity :Max person 4</p>
+
+                        <p>Services :Wifi,Bathroom</p>
+                    
+                    </td>
+                    <td class="text-center">
+                        <!--Room Images-->
+                        {% load static %}
+                        <img src="{% static 'gakyil.jpg' %}" alt="" style="height:200px;width:400px;"
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!--Room tables ends here-->
+
+    
+    {% endblock body %}
+   
+   
